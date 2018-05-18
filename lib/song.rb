@@ -1,12 +1,24 @@
 
 class Song
-  @@album_count = 0 
+  @@count = 0 
  
   def initialize
-    @@album_count += 1
+    @@count += 1
   end
  
   def self.count
-    @@album_count
+    @@count
   end
+  
+  @@genres = 0 
+ 
+  def initialize
+    @@genres += 1
+  end
+ 
+  def self.count
+    @@genres
+  end
+  
+  
 end
