@@ -1,41 +1,54 @@
+require 'pry'
 
 class Song
-  @@count = 0 
- 
-  def initialize
+  attr_accessor :name, :artist, :genre
+
+  @@count = 0
+  @@genres = []
+  @@artists = []
+
+  def initialize(song_name, artist, genre)
+    @name = song_name
+    @artist = artist
+    @genre = genre
     @@count += 1
+    @@genres << genre
+    @@artists << artist
   end
- 
+
   def self.count
     @@count
   end
-  
-  @@genres = 0 
- 
-  def initialize
-    @@genres += 1
+
+  def self.genres
+    @@genres.uniq!
   end
- 
-  def self.count
-    @@genres
+
+  def self.artists
+    @@artists.uniq!
   end
-  
-  @@artists = 0 
- 
-  def initialize
-    @@artists += 1
+
+  def self.genre_count
+    genre_count = {}
+    @@genres.each do |genre|
+      if genre_count[genre] #if the genre is already in the hash
+        genre_count[genre] += 1
+      else #if it's a new genre
+        genre_count[genre] = 1
+      end
+    end
+    genre_count
   end
- 
-  def self.count
-    @@artists
+
+  def self.artist_count
+    artist_count = {}
+    @@artists.each do |artist|
+      if artist_count[artist] #if the artist is already in the hash
+        artist_count[artist] += 1
+      else
+        artist_count[artist] = 1
+      end
+    end
+    artist_count
   end
-  
-  def genres_count
-    self.genres_count
-  end
-  
-  def artists_count
-    self.artists_count
-  end
-  
 end
