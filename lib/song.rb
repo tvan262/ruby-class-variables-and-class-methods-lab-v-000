@@ -20,5 +20,15 @@ class Song
     @@genres
   end
   
+  @@artists = 0 
+ 
+  def initialize
+    @@artists += 1
+  end
+ 
+  def self.count
+    @@artists
+  end
+  
   
 end
